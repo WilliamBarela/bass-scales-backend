@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_041412) do
+ActiveRecord::Schema.define(version: 2020_05_14_051418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "feelings", force: :cascade do |t|
+    t.string "adjective"
+    t.bigint "scale_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["scale_id"], name: "index_feelings_on_scale_id"
+  end
 
   create_table "scales", force: :cascade do |t|
     t.string "root"
@@ -22,4 +30,5 @@ ActiveRecord::Schema.define(version: 2020_05_14_041412) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "feelings", "scales"
 end
