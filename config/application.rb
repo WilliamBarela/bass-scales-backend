@@ -33,5 +33,16 @@ module BassScalesBackend
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Setting up rack-cors
+    # https://github.com/learn-co-curriculum/js-rails-as-api-creating-a-rails-api-from-scratch
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'localhost:2785'
+        resource '*',
+          headers: :any,
+          methods: [:get, :post]
+      end
+    end
   end
 end
