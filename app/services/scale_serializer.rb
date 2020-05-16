@@ -4,13 +4,16 @@ class ScaleSerializer
   end
 
   def to_serialized_json
-    @scale.to_json(
-      :include => {
-        :feelings => {
-          :except => [:created_at, :updated_at]
-        }
-      },
-      :except => [:created_at, :updated_at]
+    {
+      :data => {
+        :scale => self.slim_scale
+      }
+    }
+  end
+
+  def slim_scale
+    JSON.parse(
+      @scale.to_json(:except => [:created_at, :updated_at])
     )
   end
 end
