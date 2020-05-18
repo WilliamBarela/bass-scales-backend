@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v0 do
-      resources :scales, only: [:show]
-      resources :feelings, only: [:create]
+      resources :scales, only: [:show] do
+        resources :feelings, only: [:create]
+      end
     end
   end
 end
