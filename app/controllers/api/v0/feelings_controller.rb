@@ -5,9 +5,9 @@ class Api::V0::FeelingsController < ApplicationController
     feeling = scale.feelings.build(:adjective => feeling_params[:feeling_adjective])
 
     if feeling.save
-      render json: {:message => "Sucess!!"}
+      render json: {:errors => false}, status: :created
     else
-      render json: {:message => "Failure!!"}
+      render json: {:errors => feeling.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
