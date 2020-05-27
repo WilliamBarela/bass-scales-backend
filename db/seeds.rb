@@ -16,6 +16,8 @@ musical_adjectives = ["Jazz", "Country", "Latin", "Blues", "Classical", "Rap", "
                       "Calm", "Enlightening", "Frighten", "Invigorating", "Rejuvenating", "Restoritive", "Healing",
                       "Empowering", "Stiring", "Exhilarating", "Uplifting"]
 
+musical_adjectives = musical_adjectives.collect{|adjective| adjective.downcase}
+
 roots = [ "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb" ]
 modes = ["I", "II", "III", "IV", "V", "VI", "VII"]
 
